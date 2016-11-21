@@ -26,4 +26,5 @@ class StoreController extends Controller
 
  		return view('store.show', compact('product'));
  	}
+
 }

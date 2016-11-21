@@ -22,7 +22,7 @@
 						<span class="label label-success">Precio: ${{ $product->price }}</span>
 					</h3>
 					<p>
-						<a class="btn btn-warning btn-block" href="#">
+						<a class="btn btn-warning btn-block" href="{{ route('cart-add', $product->slug) }}">
 							<i class="fa fa-cart-plus">
 							La quiero
 							</i>
@@ -37,7 +37,7 @@
 
 
 <p>
-	<a class= "btn btn-primary" href="javascript:history.back()"><i class="fa fa-chevron-circle-left"></i> Regresar</a>
+	<a class= "btn btn-primary" href="{{ route('home') }}"><i class="fa fa-chevron-circle-left"></i> Regresar</a>
 </p>
 </div>
 
