@@ -7,7 +7,7 @@
 
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- fuente de iconos -->
 
-
+	<link rel="stylesheet" href="{{ asset('css/main.css')}}"></link>
 
 </head>
 <body>
@@ -19,7 +19,7 @@
 	@include('store.partials.footer')
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	
+
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
