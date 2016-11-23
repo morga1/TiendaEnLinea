@@ -26,4 +26,4 @@
     <script src="{{ asset('js/pinterest_grid.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
 </body>
-</html>
+</html> 
