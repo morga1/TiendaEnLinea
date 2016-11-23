@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>@yield('title', 'My Laravel Store')</title>
-	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/lumen/bootstrap.min.css"> <!-- tema bootstrap -->
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.min.css"> <!-- tema bootstrap -->
 
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- fuente de iconos -->
 

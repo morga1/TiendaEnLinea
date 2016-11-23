@@ -1,6 +1,6 @@
 body
 {
- 	background: orange;
+ 	background: white;
  	font-family: 'Open Sans', sans-serif;
 }
 
@@ -23,7 +23,7 @@ h1,h2,h3,h4,h5,h6
 
 footer
 {
-	background:  #222;
+	background:  #FFCD00;
 	text-align: center;
 }
 
@@ -110,4 +110,15 @@ transition: all 0.3s ease-in-out;
 .table-cart img
 {
 	width: 50px;
+}
+
+
+/* Detalle del pedido */
+
+.page
+{
+	background: #fff;
+	border-radius: 1em;
+	margin-bottom: 30px;
+	padding: 1em;
 }

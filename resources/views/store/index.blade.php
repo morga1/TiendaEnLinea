@@ -12,7 +12,7 @@
 				<img src="{{ $product->image }}" width="200">
 				
 				<div class="product-info panel">
-					<p>{{ $product->extract }}</p>
+					<p>{{ $product->description }}</p>
 					<h3><span class="label label-success">Precio: ${{ $product->price }} </span></h3>
 					<p>
 						<a class="btn btn-warning" href="{{ route('cart-add', $product->slug) }}">
