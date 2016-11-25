@@ -25,14 +25,17 @@
 						@foreach($categories as $category)
 							<tr>
 								<td>
-									<a href="#" class="btn btn-primary">
+									<a href="{{ route('admin.category.edit', $category) }}" class="btn btn-primary">
 										<i class="fa fa-pencil-square"></i>
 									</a>
 								</td>
 								<td>
-									<a class="btn btn-danger">
-										<i class="fa fa-trash"></i>
-									</a>
+									{!! Form::open(['route' => ['admin.category.destroy', $category]]) !!}
+        								<input type="hidden" name="_method" value="DELETE">
+        								<button onClick="return confirm('Eliminar registro?')" class="btn btn-danger">
+        									<i class="fa fa-trash-o"></i>
+        								</button>
+        							{!! Form::close() !!}
 								</td>
 								<td>{{ $category->name }}</td>
 								<td>{{ $category->description }}</td>

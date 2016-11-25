@@ -104,4 +104,8 @@ Route::post('auth/register', [
 
 //Categorias
 
+Route::get('admin/home', function(){
+	return view('admin.home');
+});
+
 Route::resource('admin/category', 'Admin\CategoryController');
