@@ -61,4 +61,9 @@ class CartController extends Controller
         return $total;
     }
 
+    // Detalle del pedido
+    public function orderDetail()
+    {
+        return "Detalle del pedido";
+    }
 }

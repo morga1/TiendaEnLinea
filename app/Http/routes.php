@@ -51,13 +51,22 @@ Route::get('cart/update/{product}/{quantity?}', [
 ]);
 
 
+
+// Detalle del pedido
+
+Route::get('order-detail', [
+	'as' => 'order-detail',
+	'uses' => 'CartController@orderDetail'
+])->middleware('auth'); //need fix** 
+
+
 // Autenticacion 5.3 doesn't found
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
 
-// Authentication routes...
+// Login
 Route::get('auth/login', [
 	'as' => 'login-get',
 	'uses' => 'Auth\AuthController@getLogin'
@@ -71,7 +80,7 @@ Route::get('auth/logout', [
 	'uses' => 'Auth\AuthController@getLogout'
 ]);
 
-// Registration routes...
+// Registro 
 Route::get('auth/register', [
 	'as' => 'register-get',
 	'uses' => 'Auth\AuthController@getRegister'
