@@ -54,14 +54,17 @@ Route::get('cart/update/{product}/{quantity?}', [
 
 // Detalle del pedido
 
+Route::group(['middleware' => 'auth'], function () {
+
 Route::get('order-detail', [
 	'as' => 'order-detail',
 	'uses' => 'CartController@orderDetail'
-])->middleware('auth'); //need fix** 
+]);
+}); //---------------- need to fix "boton comprar"
 
 
 // Autenticacion 5.3 doesn't found
-Route::auth();
+Route::auth();  //------ need to fix autenticacion
 
 Route::get('/home', 'HomeController@index');
 
@@ -89,3 +92,10 @@ Route::post('auth/register', [
 	'as' => 'register-post',
 	'uses' => 'Auth\AuthController@postRegister'
 ]);
+
+
+// -----  Administrador  ------ 
+
+//Categorias
+
+Route::resource('admin/category', 'Admin\CategoryController');
