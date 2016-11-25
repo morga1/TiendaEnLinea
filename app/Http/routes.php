@@ -15,6 +15,12 @@ Route::bind('product', function($slug){
 	return App\Product::where('slug', $slug)->first();
 });
 
+// Category dependency injection
+//vincular recurso category
+Route::bind('category', function($category){
+    return App\Category::find($category);
+});
+
 Route::get('/', [
 	'as' => 'home',
 	'uses' => 'StoreController@index'

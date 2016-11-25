@@ -6,7 +6,7 @@
 		<div class="page-header">
 			<h1>
 				<i class="fa fa-shopping-cart"></i>
-				Categorias <a href="#" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Categoría</a>
+				Categorias <a href="{{ route('admin.category.create') }}" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Categoría</a>
 			</h1>
 		</div>
 		<div class="page">
