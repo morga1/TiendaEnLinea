@@ -31,10 +31,10 @@ Route::group(['middleware' => ['web']], function () {
     	'as' => 'store',
     	'uses' => 'StoreController@index'
     	]);
-    Route::get('producto/{producto}', //producto/{producto}
+    Route::get('producto/{producto}',
     	[
-    	'as' => 'verproducto', //detalle-producto
-    	'uses' => 'StoreController@verproducto' //StoreController@verproducto
+    	'as' => 'verproducto', 
+    	'uses' => 'StoreController@verproducto' 
     	]);
 
     /*Carrito*/
@@ -42,7 +42,7 @@ Route::group(['middleware' => ['web']], function () {
     	'as' => 'carrito-show',
     	'uses' => 'CarritoController@show'
     	]);
-    Route::get('carrito/add/{producto}',[ //cart/add/{producto}
+    Route::get('carrito/add/{producto}',[
     	'as' => 'carrito-add',
     	'uses' => 'CarritoController@store'
     	]);
@@ -57,7 +57,9 @@ Route::group(['middleware' => ['web']], function () {
      Route::get('ordendetalle',[        
     'as' => 'orden-detalle',
     'uses' => 'CarritoController@ordenDetalle'
-    ])->middleware(['auth']);   
+    ])->middleware(['auth']);  
+
+
      //paypal
      Route::get('payment', array(
     'as' => 'payment',
@@ -68,20 +70,22 @@ Route::group(['middleware' => ['web']], function () {
     'as' => 'payment.status',
     'uses' => 'PaypalController@getPaymentStatus',
     ));
-     /*Admin*/
+
+     //Admin
      Route::get('admin',[
         'middleware' => 'auth',
         'as' => 'admin-show',
         'uses' => 'AdminController@show'
         ]);    
      Route::resource('admin/categoria','CategoriaController');
-     Route::resource('admin/producto','ProductoController');//admin/producto@ProductoController
+     Route::resource('admin/producto','ProductoController');
      Route::resource('admin/orden','OrdenController');
      Route::resource('admin/usuario','UsuarioController');
      
 });
 
 
+// Autenticacion Login-Register
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
