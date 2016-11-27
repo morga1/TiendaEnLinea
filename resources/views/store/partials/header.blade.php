@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand main-title" href="{{route('store')}}">Logo</a>
+      <a class="navbar-brand main-title" href="{{route('store')}}"><img src="{{asset('images/logo.png')}}" width="40"></a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
