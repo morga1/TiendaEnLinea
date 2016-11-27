@@ -74,7 +74,7 @@ class PaypalController extends BaseController
 		$transaction = new Transaction();
 		$transaction->setAmount($amount)
 			->setItemList($item_list)
-			->setDescription('Pedido de prueba en mi Laravel App Store');
+			->setDescription('Pedido de prueba en mi Tienda de Laravel');
 
 		$redirect_urls = new RedirectUrls();
 		$redirect_urls->setReturnUrl(\URL::route('payment.status'))

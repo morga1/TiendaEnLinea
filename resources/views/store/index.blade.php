@@ -8,10 +8,10 @@
 
 		@foreach($productos as $producto)
 			<div class="products">
-				<div class="col-md-3">
+				<div class="col-md-4">
 							
 						<h2>{{$producto->nombre}}</h2>			
-						<img src="{{'images/'.$producto->foto}}" width="200">				
+						<img src="{{'images/'.$producto->foto}}">				
 							<div class="product-info panel">
 								<h3>
 									<p class="label label-warning">Precio: ${{$producto->precio}}</p>

@@ -14,7 +14,7 @@ class CreateOrdensTable extends Migration
     {
         Schema::create('ordens', function (Blueprint $table) {
               $table->increments('id');
-            $table->decimal('subtotal', 5, 2);
+            $table->decimal('subtotal', 7, 2);
             $table->decimal('envio', 5,2);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
