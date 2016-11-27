@@ -2,133 +2,88 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Routes File
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
+| Here is where you will register all of the routes in an application.
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
 */
 
-Route::bind('product', function($slug){
-	return App\Product::where('slug', $slug)->first();
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| This route group applies the "web" middleware group to every route
+| it contains. The "web" middleware group is defined in your HTTP
+| kernel and includes session state, CSRF protection, and more.
+|
+*/
+
+Route::group(['middleware' => ['web']], function () {
+	//store
+    Route::get('/','StoreController@index');
+    Route::get('store',
+    	[
+    	'as' => 'store',
+    	'uses' => 'StoreController@index'
+    	]);
+    Route::get('producto/{producto}', //producto/{producto}
+    	[
+    	'as' => 'verproducto', //detalle-producto
+    	'uses' => 'StoreController@verproducto' //StoreController@verproducto
+    	]);
+
+    /*Carrito*/
+    Route::get('carrito',[ 
+    	'as' => 'carrito-show',
+    	'uses' => 'CarritoController@show'
+    	]);
+    Route::get('carrito/add/{producto}',[ //cart/add/{producto}
+    	'as' => 'carrito-add',
+    	'uses' => 'CarritoController@store'
+    	]);
+    Route::get('carrito/delete/{id}',[
+    	'as' => 'carrito-delete',
+    	'uses' => 'CarritoController@delete' 
+    	]);
+     Route::get('carrito/update/{id}/{cantidad}',[
+        'as' => 'carrito-update',
+        'uses' => 'CarritoController@update'
+        ]);
+     Route::get('ordendetalle',[        
+    'as' => 'orden-detalle',
+    'uses' => 'CarritoController@ordenDetalle'
+    ])->middleware(['auth']);   
+     //paypal
+     Route::get('payment', array(
+    'as' => 'payment',
+    'uses' => 'PaypalController@postPayment',
+    ));
+ 
+    Route::get('payment/status', array(
+    'as' => 'payment.status',
+    'uses' => 'PaypalController@getPaymentStatus',
+    ));
+     /*Admin*/
+     Route::get('admin',[
+        'middleware' => 'auth',
+        'as' => 'admin-show',
+        'uses' => 'AdminController@show'
+        ]);    
+     Route::resource('admin/categoria','CategoriaController');
+     Route::resource('admin/producto','ProductoController');//admin/producto@ProductoController
+     Route::resource('admin/orden','OrdenController');
+     Route::resource('admin/usuario','UsuarioController');
+     
 });
 
-// Category dependency injection
-//vincular recurso category
-Route::bind('category', function($category){
-    return App\Category::find($category);
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });
-
-// User dependency injection
-Route::bind('user', function($user){
-    return App\User::find($user);
-});
-
-
-Route::get('/', [
-	'as' => 'home',
-	'uses' => 'StoreController@index'
-]);
-
-Route::get('product/{slug}', [
-	'as' => 'product-detail',
-	'uses' => 'StoreController@show'
-	]
-	);
-
-
-/* Carrito */
-
-Route::get('cart/show', [
-	'as' => 'cart-show',
-	'uses' => 'CartController@show'
-]);
-Route::get('cart/add/{product}', [
-	'as' => 'cart-add',
-	'uses' => 'CartController@add'
-]);
-Route::get('cart/delete/{product}',[
-	'as' => 'cart-delete',
-	'uses' => 'CartController@delete'
-]);
-Route::get('cart/trash', [
-	'as' => 'cart-trash',
-	'uses' => 'CartController@trash'
-]);
-Route::get('cart/update/{product}/{quantity?}', [
-	'as' => 'cart-update',
-	'uses' => 'CartController@update'
-]);
-
-
-
-// Detalle del pedido
-
-Route::group(['middleware' => 'auth'], function () {
-
-Route::get('order-detail', [
-	'as' => 'order-detail',
-	'uses' => 'CartController@orderDetail'
-]);
-}); //---------------- need to fix "boton comprar"
-
-
-// Autenticacion 5.3 doesn't found
-Route::auth();  //------ need to fix autenticacion
-
-Route::get('/home', 'HomeController@index');
-
-
-// Login
-Route::get('auth/login', [
-	'as' => 'login-get',
-	'uses' => 'Auth\AuthController@getLogin'
-]);
-Route::post('auth/login', [
-	'as' => 'login-post',
-	'uses' => 'Auth\AuthController@postLogin'
-]);
-Route::get('auth/logout', [
-	'as' => 'logout',
-	'uses' => 'Auth\AuthController@getLogout'
-]);
-
-// Registro 
-Route::get('auth/register', [
-	'as' => 'register-get',
-	'uses' => 'Auth\AuthController@getRegister'
-]);
-Route::post('auth/register', [
-	'as' => 'register-post',
-	'uses' => 'Auth\AuthController@postRegister'
-]);
-
-
-//Paypal
-
-// Enviamos nuestro pedido a PayPal
-Route::get('payment', array(
-	'as' => 'payment',
-	'uses' => 'PaypalController@postPayment',
-));
-
-// Después de realizar el pago Paypal redirecciona a esta ruta
-Route::get('payment/status', array(
-	'as' => 'payment.status',
-	'uses' => 'PaypalController@getPaymentStatus',
-));
-
-
-// -----  Administrador  ------ 
-
-//Categorias
-
-Route::get('admin/home', function(){
-	return view('admin.home');
-});
-
-Route::resource('admin/category', 'Admin\CategoryController');
-Route::resource('admin/product', 'Admin\ProductController');
-Route::resource('admin/user', 'Admin\UserController');

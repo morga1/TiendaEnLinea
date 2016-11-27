@@ -5,26 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Product;
+
+use App\Producto;
 
 class StoreController extends Controller
 {
- 	public function index()
- 	{
+    public function index()
+    {
+    	$productos = Producto::all();    	
+    	return view('store.index',compact('productos'));
+    }
 
- 		$products = Product::all();
- 		//dd($products);
- 		return view('store.index', compact('products'));
+    public function verproducto(Producto $producto)
+    {   
+    	$requerimientos = explode(',', $producto->requerimientos);
+    	return view('store.productoinfo',compact('producto','requerimientos'));
+    }
 
- 	}
-
- 	public function show($slug)
- 	{
- 		$product = Product::where('slug', $slug)->first();
- 		//dd($product);
-
- 		return view('store.show', compact('product'));
- 	}
-
+    public function contacto()
+    {
+        return view('store.contacto');
+    }
 }

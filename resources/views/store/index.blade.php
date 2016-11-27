@@ -2,27 +2,32 @@
 
 @section('content')
 
-@include('store.partials.slider')
+@include('store.partials.carrusel')
 
 <div class="container text-center">
-	<div id="products">
-		@foreach($products as $product)
-			<div class="product white-panel">
-				<h3>{{ $product->name }}</h3><hr>
-				<img src="{{ $product->image }}" width="200">
-				
-				<div class="product-info panel">
-					<p>{{ $product->description }}</p>
-					<h3><span class="label label-success">Precio: ${{ $product->price }} </span></h3>
-					<p>
-						<a class="btn btn-warning" href="{{ route('cart-add', $product->slug) }}">
-							<i class="fa fa-cart-plus"></i> La quiero
-						</a>
-						<a class="btn btn-primary" href="{{ route('product-detail', $product->slug) }}"><i class="fa fa-chevron-circle-right"></i> Leer mas</a>
-					</p>
+
+		@foreach($productos as $producto)
+			<div class="products">
+				<div class="col-md-3">
+							
+						<h2>{{$producto->nombre}}</h2>			
+						<img src="{{'images/'.$producto->foto}}" width="200">				
+							<div class="product-info panel">
+								<h3>
+									<p class="label label-warning">Precio: ${{$producto->precio}}</p>
+								</h3>
+									<p>
+										<a href="{{route('verproducto',$producto)}}" class="label label-info">
+											<span><i class="fa fa-book"></i> Leer mas</span></a>
+										<a href="{{route('carrito-add',$producto->id)}}"  class="label label-success">
+											<span><i class="fa fa-cart-arrow-down"></i> Agregar al carrito</span>
+										</a>
+									</p>
+							</div>
+
 				</div>
 			</div>
-		@endforeach
-	</div>
-</div>
-@stop
+		@endforeach	
+</div>	
+
+@endsection
