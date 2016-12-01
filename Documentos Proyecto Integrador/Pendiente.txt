@@ -1,0 +1,28 @@
+Fase Inicio
+1.8 Objetivos a Nivel de Usuario
+	Pag 6 Gestionar Inventario (No se si va)
+
+1.9 Perspectiva del Producto
+	Falta dibujo
+
+
+2.5 Descripcion Completa Casos de Uso
+	Saber fecha cuando se hicieron
+
+
+
+
+Hacer Fase de Elaboracion
+
+Diagramas de Secuencia
+	CU02 Registrar Articulo (dice puto) xD
+
+Checar los contratos el Eliminar categoria
+	(creo de que dice deleteArticle(id) y tambien checar los DS y los de coolaboracion)
+
+
+Modelo de domilio agregarle variables a los atributos (int)
+
+
+
+
