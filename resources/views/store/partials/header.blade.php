@@ -11,7 +11,7 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <p class="navbar-text">Tienda Laravel</p>      
+      <p class="navbar-text">Dale Play a tu vida</p>      
         <ul class="nav navbar-nav navbar-right">
         <li><a href="{{route('carrito-show')}}"><i class="fa fa-shopping-cart"></i></a></li>        
        

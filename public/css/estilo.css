@@ -4,7 +4,7 @@ body
 }
 h1,h2,h3,h4,h5,h6
 {
-	color: #09c;
+	color: black;
 	font-family: 'Open Sans', sans-serif;
 }
 thead tr td p
@@ -21,6 +21,7 @@ thead tr td p
 }
 .navbar
 {
+	background: white;
 	margin: 0px;
 }
 .jumbotron
@@ -137,12 +138,13 @@ transition: all 0.3s ease-in-out;
  /* ----- footer ----- */
 footer
 {
-	background:  #FFCD00;
+	background:  black;
 	text-align: center;
 }
 
 footer p
 {
+	color: gray;
 	text-align: justify;
 }
 
@@ -157,12 +159,12 @@ ul.redes li
 
 ul.redes li a
 {
-	color: orange;
+	color: red;
 }
 
 .avatar
 {
-	border: 5px solid orange;
+	border: 5px solid red;
 	border-radius:50%;
 	float: left;
 	height: 100px;

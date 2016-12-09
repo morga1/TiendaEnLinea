@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html charset="utf-8">
 <head>
-	<title>Tienda Laravel</title>	
+	<title>Laravel Play</title>	
 
 	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.min.css"> <!-- tema bootstrap -->
 
